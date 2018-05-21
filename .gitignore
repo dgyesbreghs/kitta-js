@@ -33,7 +33,7 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-lib
+distribution
 flow-typed
 env/development.env
 
