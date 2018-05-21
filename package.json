@@ -1,16 +1,14 @@
 {
   "name": "kitta",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "distribution/kitta.js",
+  "typings": "distribution/kitta.d.ts",
   "author": "Dylan Gyesbreghs <dgyesbreghs@gmail.com>",
   "license": "MIT",
-  "scripts": {},
-  "devDependencies": {
-    "babel-cli": "^6.26.0"
-  },
-  "dependencies": {
-    "@types/request": "^2.47.0",
-    "request": "^2.87.0"
+  "lint-staged": {
+    "*.json": ["yarn prettier --write", "git add"],
+    "*.@(ts|tsx)": ["tslint --fix", "yarn prettier --write", "git add"],
+    "*.md": ["yarn prettier --write", "git add"]
   },
   "prettier": {
     "printWidth": 120,
@@ -19,5 +17,26 @@
     "trailingComma": "es5",
     "bracketSpacing": true,
     "proseWrap": "always"
-  }
+  },
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgyesbreghs/kitta-js.git"
+  },
+  "keywords": [
+    "kitta",
+    "jenkins",
+    "cli"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "@types/request": "^2.47.0",
+    "lint-staged": "^7.1.2",
+    "request": "^2.87.0"
+  },
+  "optionalDependencies": {}
 }
