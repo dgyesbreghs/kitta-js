@@ -5,10 +5,40 @@
   "typings": "distribution/kitta.d.ts",
   "author": "Dylan Gyesbreghs <dgyesbreghs@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "jest-json-reporter",
+    "testRegex": "(.test)\\.(ts|tsx)$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/distribution/",
+      "/types/"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "cacheDirectory": ".jest/cache"
+  },
   "lint-staged": {
-    "*.json": ["yarn prettier --write", "git add"],
-    "*.@(ts|tsx)": ["tslint --fix", "yarn prettier --write", "git add"],
-    "*.md": ["yarn prettier --write", "git add"]
+    "*.json": [
+      "yarn prettier --write",
+      "git add"
+    ],
+    "*.@(ts|tsx)": [
+      "tslint --fix",
+      "yarn prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "yarn prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "printWidth": 120,
@@ -19,7 +49,11 @@
     "proseWrap": "always"
   },
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "jest",
+    "build": "shx rm -rf ./distribution && tsc",
+    "build:fast": "tsc",
+    "build:watch": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -31,11 +65,16 @@
     "cli"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "@types/request": "^2.47.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "lint-staged": "^7.1.2",
+    "shx": "^0.2.2",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@types/request": "^2.47.0",
-    "lint-staged": "^7.1.2",
     "request": "^2.87.0"
   },
   "optionalDependencies": {}
