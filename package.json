@@ -53,7 +53,8 @@
     "test": "jest",
     "build": "shx rm -rf ./distribution && tsc",
     "build:fast": "tsc",
-    "build:watch": "tsc -w"
+    "build:watch": "tsc -w",
+    "start": "yarn build && node ./distribution/kitta.js"
   },
   "repository": {
     "type": "git",
@@ -65,6 +66,7 @@
     "cli"
   ],
   "devDependencies": {
+    "@types/debug": "^0.0.30",
     "@types/request": "^2.47.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -72,9 +74,11 @@
     "shx": "^0.2.2",
     "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "request": "^2.87.0"
   },
   "optionalDependencies": {}
