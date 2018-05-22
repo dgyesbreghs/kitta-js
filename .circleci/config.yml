@@ -7,16 +7,15 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        key: yarn-{{ .Branch }}-{{ checksum "package.json" }}
+          key: yarn-{{ .Branch }}-{{ checksum "package.json" }}
       - run:
-        name: System Information
-        command: |
-          echo "Node $(node -v)"
-          echo "Yarn v$(yarn --version)"
+          name: System Information
+          command: |
+            echo "Node $(node -v)"
+            echo "Yarn v$(yarn --version)"
       - run: yarn
       - save_cache:
           key: yarn-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ~/kitta-js/node_modules
             - ~/.cache/yarn/
-            
